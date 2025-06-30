@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import { AuthProvider, useAuth } from './store/authStore';
@@ -29,6 +29,7 @@ const PerfilRedirect: React.FC = () => {
         { nome: 'Maria', nota: 5, comentario: 'Excelente atendimento!' },
         { nome: 'Carlos', nota: 4, comentario: 'Muito atenciosa.' },
       ],
+      horarios: ['20/06/2024 14:00', '21/06/2024 10:00'],
     },
     {
       id: '3',
@@ -36,6 +37,7 @@ const PerfilRedirect: React.FC = () => {
       avaliacoes: [
         { nome: 'João', nota: 5, comentario: 'Ótimo profissional.' },
       ],
+      horarios: ['25/06/2024 09:30', '26/06/2024 11:00'],
     },
     // ... outros profissionais omitidos
   ];
@@ -95,9 +97,17 @@ const PerfilRedirect: React.FC = () => {
               </div>
             )}
             <div style={{ borderBottom: '1px solid #E0E0E0', margin: '18px 0 0 0' }} />
-            <div style={{ color: '#BDBDBD', textAlign: 'center', fontSize: 13, marginTop: 14 }}>
-              (Em breve: Histórico, agenda...)
-            </div>
+            <h3 style={{ color: '#426B1F', fontWeight: 500, fontSize: 16, margin: '18px 0 10px 0' }}>Agenda</h3>
+            {profissionalMock?.horarios && profissionalMock.horarios.length > 0 ? (
+              <ul style={{ paddingLeft: 18, margin: 0, color: '#42536B', fontSize: 15 }}>
+                {profissionalMock.horarios.map((h, idx) => (
+                  <li key={idx} style={{ marginBottom: 4 }}>{h}</li>
+                ))}
+              </ul>
+            ) : (
+              <span style={{ color: '#BDBDBD', fontSize: 14 }}>Nenhum horário disponível.</span>
+            )}
+            <div style={{ borderBottom: '1px solid #E0E0E0', margin: '18px 0 0 0' }} />
           </div>
         </div>
       </div>

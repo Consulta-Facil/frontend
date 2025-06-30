@@ -222,22 +222,6 @@ export const AgendamentoPaciente: React.FC = () => {
     setAgendamentos(prev => prev.map(a => a.id === id ? { ...a, status: 'cancelado' } : a));
   };
 
-  // Gerar lista dinâmica de profissionais consultados para o perfil
-  const profissionaisConsultados = Array.from(
-    agendamentos.reduce((map, ag) => {
-      if (!map.has(ag.profissional)) {
-        map.set(ag.profissional, {
-          nome: ag.profissional,
-          especialidade: ag.especialidade,
-          consultas: 1,
-        });
-      } else {
-        map.get(ag.profissional).consultas++;
-      }
-      return map;
-    }, new Map()).values()
-  );
-
   // Abrir modal de avaliação
   const handleAbrirAvaliar = (agendamento: any) => {
     setModalAvaliar({ aberto: true, agendamento });

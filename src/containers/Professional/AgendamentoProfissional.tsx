@@ -94,7 +94,6 @@ export const AgendamentoProfissional: React.FC = () => {
   };
 
   const handleAbrirReagendar = (agendamento: any) => {
-    const profissional = mockAgendamentos.find(p => p.paciente === agendamento.paciente && p.especialidade === agendamento.especialidade);
     const horarios = [
       '28/06/2024 10:00',
       '29/06/2024 14:00',
@@ -109,10 +108,6 @@ export const AgendamentoProfissional: React.FC = () => {
       setAgendamentos(prev => prev.map(a => a.id === modalReagendar.agendamento.id ? { ...a, data: novoHorario.split(' ')[0], hora: novoHorario.split(' ')[1], status: 'futuro' } : a));
       setModalReagendar({ aberto: false });
     }
-  };
-
-  const handleVerAvaliacao = (agendamento: any) => {
-    setModalAvaliacao({ aberto: true, agendamento });
   };
 
   return (

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { Header } from '../../components/layout/Header';
-import { Footer } from '../../components/layout/Footer';
-import { ButtonPrimary, TextInput, Checkbox } from '../../components/atoms';
+import { ButtonPrimary, TextInput } from '../../components/atoms';
 import { theme } from '../../theme';
 import { useAuth } from '../../store/authStore';
 import { useNavigate, Link } from 'react-router-dom';
